@@ -8,7 +8,95 @@
       d:DesignHeight="800" d:DesignWidth="1200"
       Title="MENU">
 
+    <Page.Resources>
+        <ControlTemplate x:Key="LabelTemplate" TargetType="Label">
+            <Border TextBlock.Foreground="#46B29D" CornerRadius="30" BorderThickness="4"  Height="490" Width="410">
+                <Border.Background>
+                    <LinearGradientBrush>
+                        <LinearGradientBrush.GradientStops>
+                            <GradientStopCollection>
+                                <GradientStop Offset="0" Color="#FF76E383"/>
+                            </GradientStopCollection>
+                        </LinearGradientBrush.GradientStops>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <ContentPresenter
+        RecognizesAccessKey="True" Margin="0,0,-3,7"/>
+            </Border>
+        </ControlTemplate>
+
+
+        <ControlTemplate x:Key="LabelShadow" TargetType="Label">
+            <Border TextBlock.Foreground="#46B29D" CornerRadius="30" BorderThickness="12" BorderBrush="White" Width="420" Height="500">
+                <Border.Background>
+                    <LinearGradientBrush>
+                        <LinearGradientBrush.GradientStops>
+                            <GradientStopCollection>
+                                <GradientStop Offset="0" />
+                            </GradientStopCollection>
+                        </LinearGradientBrush.GradientStops>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <ContentPresenter RecognizesAccessKey="True" Margin="0,0,-3,7"/>
+            </Border>
+        </ControlTemplate>
+    </Page.Resources>
+
     <Grid>
-        
+
+        <Grid Margin="85,80,687,444" 
+              MouseLeftButtonDown="Grid_MouseLeftButtonDown"
+              Cursor="Hand">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Label Margin="0,8,2,8" 
+                   Template="{DynamicResource ResourceKey=LabelTemplate}"/>
+            <Label Template="{DynamicResource LabelShadow}"/>
+            <Image Source="/Image/Услуги.png" 
+                   Margin="123,10,117,98" />
+
+            <Label Content="Услуги" 
+                   HorizontalAlignment="Center"
+                   Margin="0,0,0,40"
+                   VerticalAlignment="Bottom" 
+                   Height="66"
+                   FontSize="44"
+                   Foreground="White" 
+                   FontFamily="MS Reference Sans Serif"/>
+        </Grid>
+
+
+        <Grid Margin="640,84,60,442" 
+              Cursor="Hand"
+              MouseLeftButtonDown="Grid_MouseLeftButtonDown_1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Label Margin="0,8,2,8" 
+                   Template="{DynamicResource ResourceKey=LabelTemplate}"/>
+            <Label Template="{DynamicResource LabelShadow}"/>
+            <Image Source="/Image/Приёмы.png" Margin="102,10,88,87" />
+
+            <Label Content="Приёмы"
+                   HorizontalAlignment="Center"
+                   Margin="0,168,0,0"
+                   VerticalAlignment="Top" 
+                   Height="66"
+                   Width="191"
+                   FontSize="44"
+                   Foreground="White" 
+                   FontFamily="MS Reference Sans Serif"/>
+        </Grid>
+
+
+
+
     </Grid>
 </Page>
