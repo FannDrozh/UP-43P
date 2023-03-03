@@ -32,10 +32,6 @@ namespace UP.Pages
             InitializeComponent();
 
         }
-        private void reg_Click(object sender, RoutedEventArgs e)
-        {
-            //frame1.Navigate(new Registration(frame1));
-        }
         List<UP.Users> users = new List<UP.Users>();
         private void Entre_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
