@@ -21,7 +21,7 @@ namespace UP.Pages
     public partial class Authorization : Page
     {
         public Frame frame1;
-        public int vx = 0;
+        public bool vx = false;
         public Authorization(Frame frame)
         {
             frame1 = frame;
@@ -57,11 +57,12 @@ namespace UP.Pages
                     if (users[i].password == pas)
                     {
                         frame1.Navigate(new MENU(users[i].login, frame1));
+                        vx = true;
                         break;
                     }
                 }
             }
-            if (vx > 0)
+            if (vx == false)
             {
                 MessageBox.Show("Неверный логин или пароль");
             }
