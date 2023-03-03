@@ -16,17 +16,13 @@ using System.Windows.Shapes;
 namespace UP.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для MENU.xaml
+    /// Логика взаимодействия для Registration.xaml
     /// </summary>
-    public partial class MENU : Page
+    public partial class Registration : Page
     {
-        public Frame frame1;
-        string User;
-        public MENU(string user, Frame frame)
+        public Registration()
         {
             InitializeComponent();
-            frame1 = frame;
-            User = user;
         }
     }
 }
