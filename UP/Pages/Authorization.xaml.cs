@@ -49,10 +49,14 @@ namespace UP.Pages
                 {
                     if (users[i].password == pas)
                     {
-                        frame1.Navigate(new Menu(users[i].login, frame1));
+                        frame1.Navigate(new MENU(users[i].login, frame1));
                         break;
                     }
                 }
+            }
+            if(vx>0)
+            {
+                MessageBox.Show("Неверный логин или пароль");
             }
         }
 
@@ -63,7 +67,7 @@ namespace UP.Pages
 
         private void Gues_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-           // frame1.Navigate(new Glavnaya("Guest", frame1));
+           frame1.Navigate(new MENU("Guest", frame1));
         }
     }
 }
