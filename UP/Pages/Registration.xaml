@@ -159,8 +159,7 @@
             Style="{DynamicResource TextBoxStyle1}" 
             HorizontalAlignment="Left" 
             Margin="340,142,0,0" 
-            TextWrapping="Wrap" 
-            TextChanged="login_TextChanged" 
+            TextWrapping="Wrap"  
             Height="60" 
             Width="520" 
             FontSize="40" 
@@ -176,7 +175,6 @@
             VerticalAlignment="Top" 
             Height="60" 
             Width="520" 
-            TextChanged="password_TextChanged" 
             TextAlignment="Center"
                  FontFamily="Comic Sans MS"/>
         <Button x:Name="registration" 

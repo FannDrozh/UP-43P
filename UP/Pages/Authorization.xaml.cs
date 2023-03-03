@@ -41,7 +41,7 @@ namespace UP.Pages
 
         private void Reg_Click(object sender, RoutedEventArgs e)
         {
-            //frame1.Navigate(new Registration(frame1));
+            frame1.Navigate(new Registration(frame1));
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
