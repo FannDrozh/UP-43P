@@ -33,13 +33,24 @@ namespace UP.Pages
 
         }
         List<UP.Users> users = new List<UP.Users>();
-        private void Entre_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+
+        private void Gues_Click(object sender, RoutedEventArgs e)
+        {
+            frame1.Navigate(new MENU("Guest", frame1));
+        }
+
+        private void Reg_Click(object sender, RoutedEventArgs e)
+        {
+            //frame1.Navigate(new Registration(frame1));
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
             string log = login.Text;
             string pas = password.Password;
             int count = Entities1.GetContex().Users.Count();
             users = Entities1.GetContex().Users.ToList();
-            for(int i = 0; i < count; i++)
+            for (int i = 0; i < count; i++)
             {
                 if (users[i].login == log)
                 {
@@ -50,20 +61,10 @@ namespace UP.Pages
                     }
                 }
             }
-            if(vx>0)
+            if (vx > 0)
             {
                 MessageBox.Show("Неверный логин или пароль");
             }
-        }
-
-        private void Reg_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            //frame1.Navigate(new Registration(frame1));
-        }
-
-        private void Gues_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-           frame1.Navigate(new MENU("Guest", frame1));
         }
     }
 }
