@@ -187,7 +187,7 @@
                 FontSize="50" 
                 Margin="0,499,0,172" 
                 FontFamily="Comic Sans MS" 
-                Cursor="Hand" 
+                Cursor="Hand" Click="registration_Click" 
                 />
         <Button x:Name="back" 
                 Style="{DynamicResource ButtonStyle1}"
@@ -198,7 +198,7 @@
             FontFamily="Comic Sans MS" 
             Cursor="Hand" 
             Click="back_Click" 
-            Margin="844,633,85,76"/>
+            Margin="896,681,33,28"/>
         <TextBox x:Name="password_Copy" 
             Style="{DynamicResource TextBoxStyle1}" 
             HorizontalAlignment="Left" 

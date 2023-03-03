@@ -30,5 +30,40 @@ namespace UP.Pages
         {
             frame1.Navigate(new Authorization(frame1));
         }
+
+        private void registration_Click(object sender, RoutedEventArgs e)
+        {
+            string log = login.Text;
+            string pas = password.Text;
+            string pas1 = password_Copy.Text;
+            if (log != "")
+            {
+                if(pas != "")
+                {
+                    if(pas == pas1)
+                    {
+                        List<UP.Users> user = new List<UP.Users>() { new Users()};
+                        int count = Entities1.GetContex().Users.Count();
+                        user[0].id = count+ 1;
+                        user[0].login = log;
+                        user[0].password = pas1;
+                        Entities1.GetContex().SaveChanges();
+                        frame1.Navigate(new Authorization(frame1));
+                    }
+                    else
+                    {
+                        MessageBox.Show("Пароли не совпадают");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Введите пароль");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Введите логин");
+            }
+        }
     }
 }
