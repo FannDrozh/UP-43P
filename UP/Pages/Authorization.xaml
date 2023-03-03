@@ -216,7 +216,7 @@
                     FontSize="30" 
                     FontFamily="Comic Sans MS"
                     Foreground="White" 
-                    Width="246" Click="Gues_MouseLeftButtonDown"/>
+                    Width="246" Click="Gues_Click" />
         <Button  Style="{DynamicResource ButtonStyle1}"
                     x:Name="Reg"
                     Content="Зарегистрироваться" 
@@ -226,7 +226,7 @@
                     FontSize="30" 
                     FontFamily="Comic Sans MS"
                     Foreground="White" 
-                    Width="304" Click="Reg_MouseLeftButtonDown"/>
+                    Width="304" Click="Reg_Click" />
         <Button Style="{DynamicResource ButtonStyle1}" 
                 Content="Вход" 
                 HorizontalAlignment="Center" 
@@ -234,6 +234,6 @@
                 VerticalAlignment="Top"
                 FontSize="50" 
                 FontFamily="Comic Sans MS"
-                Foreground="White" Width="144" Click="Entre_MouseLeftButtonDown"/>
+                Foreground="White" Width="144" Click="Button_Click" />
     </Grid>
 </Page>
