@@ -164,7 +164,7 @@
     <Resource Include="Image\logo.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Image\logo.png" />
+    <SplashScreen Include="Image\logo.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="logo.ico" />

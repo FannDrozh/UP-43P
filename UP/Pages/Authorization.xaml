@@ -97,6 +97,61 @@
                 </MultiTrigger>
             </Style.Triggers>
         </Style>
+        <Style x:Key="FocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="2" StrokeDashArray="1 2" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" SnapsToDevicePixels="true" StrokeThickness="1"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <SolidColorBrush x:Key="Button.Static.Background" Color="#FF498C51"/>
+        <SolidColorBrush x:Key="Button.Static.Border" Color="#00707070"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FF76E383"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Border" Color="#003C7FB1"/>
+        <SolidColorBrush x:Key="Button.Pressed.Background" Color="#FF76E383"/>
+        <SolidColorBrush x:Key="Button.Pressed.Border" Color="#003C7FB1"/>
+        <SolidColorBrush x:Key="Button.Disabled.Background" Color="#FFF4F4F4"/>
+        <SolidColorBrush x:Key="Button.Disabled.Border" Color="#003C7FB1"/>
+        <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
+        <Style x:Key="ButtonStyle1" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" CornerRadius="25"  Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.MouseOver.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.MouseOver.Border}"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Pressed.Border}"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Page.Resources>
 
     <Grid Width="1200" Height="700">
@@ -109,7 +164,7 @@
                Foreground="White" 
                FontWeight="Normal" 
                FontStyle="Normal" 
-               FontFamily="Bahnschrift"/>
+               FontFamily="Comic Sans MS"/>
         <TextBox Style="{DynamicResource TextBoxStyle1}" 
                  x:Name="login" 
                  TextWrapping="Wrap" 
@@ -118,36 +173,22 @@
                  Width="520" 
                  Margin="340,176,340,464" 
                  FontSize="40" 
-                 TextAlignment="Left"/>
+                 TextAlignment="Left" FontFamily="Comic Sans MS"/>
         <Label Content="Пароль" 
                FontSize="40"
                Height="60"
                HorizontalAlignment="Center"
-               Width="150" 
+               Width="174" 
                Margin="0,236,0,404"
                Foreground="White" 
-               FontFamily="Bahnschrift"/>
+               FontFamily="Comic Sans MS"/>
         <PasswordBox Style="{DynamicResource PasswordBoxStyle1}" 
                      x:Name="password" 
                      HorizontalAlignment="Center" 
                      Height="60"
                      Width="520" 
                      Margin="0,296,0,344" 
-                     FontSize="40" />
-
-        <TextBlock x:Name="Entre"
-                   Text="Вход" 
-                   TextDecorations="Underline" 
-                   TextAlignment="Center"
-                   TextWrapping="WrapWithOverflow"
-                   HorizontalAlignment="Center"
-                   Width="150"
-                   FontWeight="Bold" 
-                   Foreground="White"
-                   FontSize="50" Margin="0,387,0,247" 
-                   FontFamily="Bahnschrift" 
-                   MouseLeftButtonDown="Entre_MouseLeftButtonDown" 
-                   Cursor="Hand"/>
+                     FontSize="40" FontFamily="Comic Sans MS" />
 
         <TextBlock Text="Впервые? Вы можете" 
                    TextAlignment="Center"
@@ -156,21 +197,8 @@
                    Width="315"
                    Foreground="White"
                    FontSize="30" 
-                   Margin="117,602,0,56" 
-                   FontFamily="Bahnschrift"/>
-        <TextBlock x:Name="Reg"
-                   Text="Зарегистрироваться"
-                   TextDecorations="Underline" 
-                   TextAlignment="Center"
-                   TextWrapping="WrapWithOverflow"
-                   HorizontalAlignment="Left"
-                   Width="299"
-                   FontWeight="Bold" 
-                   Foreground="White"
-                   FontSize="30" Margin="437,602,0,56" 
-                   FontFamily="Bahnschrift" 
-                   Cursor="Hand" 
-                   MouseLeftButtonDown="Reg_MouseLeftButtonDown"/>
+                   Margin="117,592,0,66" 
+                   FontFamily="Comic Sans MS"/>
         <TextBlock Text="или"
                    TextAlignment="Center"
                    TextWrapping="WrapWithOverflow"
@@ -178,21 +206,33 @@
                    Width="90"
                    Foreground="White"
                    FontSize="30" 
-                   Margin="741,602,0,56" 
-                   FontFamily="Bahnschrift"/>
-        <TextBlock x:Name="Gues"
-                   Text="Войти как гость"
-                   TextDecorations="Underline" 
-                   TextAlignment="Center"
-                   TextWrapping="WrapWithOverflow"
-                   HorizontalAlignment="Left"
-                   Width="234"
-                   FontWeight="Bold" 
-                   Foreground="White"
-                   FontSize="30" 
-                   Margin="836,602,0,56" 
-                   FontFamily="Bahnschrift" 
-                   Cursor="Hand" 
-                   MouseLeftButtonDown="Gues_MouseLeftButtonDown"/>
+                   Margin="758,593,0,65" 
+                   FontFamily="Comic Sans MS"/>
+        <TextBlock  x:Name="Gues"
+                    Text="Войти как гость" 
+                    HorizontalAlignment="Left" 
+                    Margin="853,592,0,0" 
+                    VerticalAlignment="Top"
+                    FontSize="30" 
+                    FontFamily="Comic Sans MS"
+                    Foreground="White" 
+                    Width="246"/>
+        <TextBlock  x:Name="Reg"
+                    Text="Зарегистрироваться" 
+                    HorizontalAlignment="Left" 
+                    Margin="454,589,0,0" 
+                    VerticalAlignment="Top" 
+                    FontSize="30" 
+                    FontFamily="Comic Sans MS"
+                    Foreground="White" 
+                    Width="304"/>
+        <Button Style="{DynamicResource ButtonStyle1}" 
+                Content="Вход" 
+                HorizontalAlignment="Center" 
+                Margin="0,390,0,0" 
+                VerticalAlignment="Top"
+                FontSize="50" 
+                FontFamily="Comic Sans MS"
+                Foreground="White" Width="144"/>
     </Grid>
 </Page>
