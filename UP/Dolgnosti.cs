@@ -12,24 +12,18 @@ namespace UP
     using System;
     using System.Collections.Generic;
     
-    public partial class User
+    public partial class Dolgnosti
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public User()
+        public Dolgnosti()
         {
-            this.Results = new HashSet<Result>();
+            this.Workers = new HashSet<Workers>();
         }
     
         public int id { get; set; }
-        public string name { get; set; }
-        public string login { get; set; }
-        public string password { get; set; }
-        public string ip { get; set; }
-        public Nullable<System.DateTime> latenter { get; set; }
-        public string services { get; set; }
-        public Nullable<int> type { get; set; }
+        public string dolgnost { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Result> Results { get; set; }
+        public virtual ICollection<Workers> Workers { get; set; }
     }
 }

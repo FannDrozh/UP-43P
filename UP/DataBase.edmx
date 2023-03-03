@@ -4,14 +4,21 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Хранилище Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Хранилище Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Dolgnosti">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="dolgnost" Type="varchar(max)" />
+        </EntityType>
         <EntityType Name="Results">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" Nullable="false" />
           <Property Name="id_user" Type="int" />
-          <Property Name="id_lab" Type="int" />
+          <Property Name="id_work" Type="int" />
           <Property Name="id_service" Type="int" />
           <Property Name="result" Type="nchar" MaxLength="1" />
           <Property Name="data" Type="varchar" MaxLength="12" />
@@ -44,8 +51,19 @@
           <Property Name="password" Type="varchar(max)" />
           <Property Name="ip" Type="varchar(max)" />
           <Property Name="latenter" Type="date" />
-          <Property Name="services" Type="varchar(max)" />
-          <Property Name="type" Type="int" />
+        </EntityType>
+        <EntityType Name="Workers">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar(max)" />
+          <Property Name="login" Type="varchar(max)" />
+          <Property Name="password" Type="varchar(max)" />
+          <Property Name="ip" Type="varchar(max)" />
+          <Property Name="lastenter" Type="varchar(max)" />
+          <Property Name="id_dolgnost" Type="int" Nullable="false" />
+          <Property Name="analyzator" Type="varchar(max)" />
         </EntityType>
         <Association Name="FK_Results_Service">
           <End Role="Service" Type="Self.Service" Multiplicity="0..1" />
@@ -71,11 +89,37 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Results_Workers">
+          <End Role="Workers" Type="Self.Workers" Multiplicity="0..1" />
+          <End Role="Results" Type="Self.Results" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Workers">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Results">
+              <PropertyRef Name="id_work" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Workers_Dolgnosti">
+          <End Role="Dolgnosti" Type="Self.Dolgnosti" Multiplicity="1" />
+          <End Role="Workers" Type="Self.Workers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dolgnosti">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Workers">
+              <PropertyRef Name="id_dolgnost" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="Хранилище ModelContainer">
+          <EntitySet Name="Dolgnosti" EntityType="Self.Dolgnosti" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Results" EntityType="Self.Results" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Service" EntityType="Self.Service" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Workers" EntityType="Self.Workers" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Results_Service" Association="Self.FK_Results_Service">
             <End Role="Service" EntitySet="Service" />
             <End Role="Results" EntitySet="Results" />
@@ -84,23 +128,41 @@
             <End Role="Users" EntitySet="Users" />
             <End Role="Results" EntitySet="Results" />
           </AssociationSet>
+          <AssociationSet Name="FK_Results_Workers" Association="Self.FK_Results_Workers">
+            <End Role="Workers" EntitySet="Workers" />
+            <End Role="Results" EntitySet="Results" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Workers_Dolgnosti" Association="Self.FK_Workers_Dolgnosti">
+            <End Role="Dolgnosti" EntitySet="Dolgnosti" />
+            <End Role="Workers" EntitySet="Workers" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Result">
+        <EntityType Name="Dolgnosti">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="dolgnost" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Workers" Relationship="Self.FK_Workers_Dolgnosti" FromRole="Dolgnosti" ToRole="Workers" />
+        </EntityType>
+        <EntityType Name="Results">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" />
           <Property Name="id_user" Type="Int32" />
-          <Property Name="id_lab" Type="Int32" />
+          <Property Name="id_work" Type="Int32" />
           <Property Name="id_service" Type="Int32" />
-          <Property Name="result1" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="result" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
           <Property Name="data" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Service" Relationship="Model.FK_Results_Service" FromRole="Result" ToRole="Service" />
-          <NavigationProperty Name="User" Relationship="Model.FK_Results_Users" FromRole="Result" ToRole="User" />
+          <NavigationProperty Name="Service" Relationship="Self.FK_Results_Service" FromRole="Results" ToRole="Service" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_Results_Users" FromRole="Results" ToRole="Users" />
+          <NavigationProperty Name="Workers" Relationship="Self.FK_Results_Workers" FromRole="Results" ToRole="Workers" />
         </EntityType>
         <EntityType Name="Service">
           <Key>
@@ -109,9 +171,19 @@
           <Property Name="id" Type="Int32" Nullable="false" />
           <Property Name="service1" Type="String" MaxLength="40" FixedLength="true" Unicode="true" />
           <Property Name="price" Type="Double" />
-          <NavigationProperty Name="Results" Relationship="Model.FK_Results_Service" FromRole="Service" ToRole="Result" />
+          <NavigationProperty Name="Results" Relationship="Self.FK_Results_Service" FromRole="Service" ToRole="Results" />
         </EntityType>
-        <EntityType Name="User">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Users">
           <Key>
             <PropertyRef Name="id" />
           </Key>
@@ -121,77 +193,122 @@
           <Property Name="password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="ip" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="latenter" Type="DateTime" Precision="0" />
-          <Property Name="services" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="type" Type="Int32" />
-          <NavigationProperty Name="Results" Relationship="Model.FK_Results_Users" FromRole="User" ToRole="Result" />
+          <NavigationProperty Name="Results" Relationship="Self.FK_Results_Users" FromRole="Users" ToRole="Results" />
         </EntityType>
-        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Results" EntityType="Self.Result" />
-          <EntitySet Name="Services" EntityType="Self.Service" />
-          <EntitySet Name="Users" EntityType="Self.User" />
-          <EntitySet Name="sysdiagrams" EntityType="Model.sysdiagram" />
-          <AssociationSet Name="FK_Results_Service" Association="Model.FK_Results_Service">
-            <End Role="Service" EntitySet="Services" />
-            <End Role="Result" EntitySet="Results" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Results_Users" Association="Model.FK_Results_Users">
-            <End Role="User" EntitySet="Users" />
-            <End Role="Result" EntitySet="Results" />
-          </AssociationSet>
-        </EntityContainer>
-        <EntityType Name="sysdiagram">
+        <EntityType Name="Workers">
           <Key>
-            <PropertyRef Name="diagram_id" />
+            <PropertyRef Name="id" />
           </Key>
-          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="login" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ip" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="lastenter" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="id_dolgnost" Type="Int32" Nullable="false" />
+          <Property Name="analyzator" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Dolgnosti" Relationship="Self.FK_Workers_Dolgnosti" FromRole="Workers" ToRole="Dolgnosti" />
+          <NavigationProperty Name="Results" Relationship="Self.FK_Results_Workers" FromRole="Workers" ToRole="Results" />
         </EntityType>
+        <Association Name="FK_Workers_Dolgnosti">
+          <End Role="Dolgnosti" Type="Self.Dolgnosti" Multiplicity="1" />
+          <End Role="Workers" Type="Self.Workers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dolgnosti">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Workers">
+              <PropertyRef Name="id_dolgnost" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Results_Service">
-          <End Type="Model.Service" Role="Service" Multiplicity="0..1" />
-          <End Type="Model.Result" Role="Result" Multiplicity="*" />
+          <End Role="Service" Type="Self.Service" Multiplicity="0..1" />
+          <End Role="Results" Type="Self.Results" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Service">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="Result">
+            <Dependent Role="Results">
               <PropertyRef Name="id_service" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Results_Users">
-          <End Type="Model.User" Role="User" Multiplicity="0..1" />
-          <End Type="Model.Result" Role="Result" Multiplicity="*" />
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Results" Type="Self.Results" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="User">
+            <Principal Role="Users">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="Result">
+            <Dependent Role="Results">
               <PropertyRef Name="id_user" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Results_Workers">
+          <End Role="Workers" Type="Self.Workers" Multiplicity="0..1" />
+          <End Role="Results" Type="Self.Results" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Workers">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Results">
+              <PropertyRef Name="id_work" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Entities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Dolgnosti" EntityType="Self.Dolgnosti" />
+          <EntitySet Name="Results" EntityType="Self.Results" />
+          <EntitySet Name="Service" EntityType="Self.Service" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Users" EntityType="Self.Users" />
+          <EntitySet Name="Workers" EntityType="Self.Workers" />
+          <AssociationSet Name="FK_Workers_Dolgnosti" Association="Self.FK_Workers_Dolgnosti">
+            <End Role="Dolgnosti" EntitySet="Dolgnosti" />
+            <End Role="Workers" EntitySet="Workers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Results_Service" Association="Self.FK_Results_Service">
+            <End Role="Service" EntitySet="Service" />
+            <End Role="Results" EntitySet="Results" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Results_Users" Association="Self.FK_Results_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Results" EntitySet="Results" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Results_Workers" Association="Self.FK_Results_Workers">
+            <End Role="Workers" EntitySet="Workers" />
+            <End Role="Results" EntitySet="Results" />
+          </AssociationSet>
+        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище ModelContainer" CdmEntityContainer="Entities">
+        <EntityContainerMapping StorageEntityContainer="Хранилище ModelContainer" CdmEntityContainer="Entities1">
+          <EntitySetMapping Name="Dolgnosti">
+            <EntityTypeMapping TypeName="Model.Dolgnosti">
+              <MappingFragment StoreEntitySet="Dolgnosti">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="dolgnost" ColumnName="dolgnost" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Results">
-            <EntityTypeMapping TypeName="Model.Result">
+            <EntityTypeMapping TypeName="Model.Results">
               <MappingFragment StoreEntitySet="Results">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="id_user" ColumnName="id_user" />
-                <ScalarProperty Name="id_lab" ColumnName="id_lab" />
+                <ScalarProperty Name="id_work" ColumnName="id_work" />
                 <ScalarProperty Name="id_service" ColumnName="id_service" />
-                <ScalarProperty Name="result1" ColumnName="result" />
+                <ScalarProperty Name="result" ColumnName="result" />
                 <ScalarProperty Name="data" ColumnName="data" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Services">
+          <EntitySetMapping Name="Service">
             <EntityTypeMapping TypeName="Model.Service">
               <MappingFragment StoreEntitySet="Service">
                 <ScalarProperty Name="id" ColumnName="id" />
@@ -200,8 +317,19 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="Model.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Users">
-            <EntityTypeMapping TypeName="Model.User">
+            <EntityTypeMapping TypeName="Model.Users">
               <MappingFragment StoreEntitySet="Users">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -209,19 +337,20 @@
                 <ScalarProperty Name="password" ColumnName="password" />
                 <ScalarProperty Name="ip" ColumnName="ip" />
                 <ScalarProperty Name="latenter" ColumnName="latenter" />
-                <ScalarProperty Name="services" ColumnName="services" />
-                <ScalarProperty Name="type" ColumnName="type" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="Model.sysdiagram">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="definition" ColumnName="definition" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <EntitySetMapping Name="Workers">
+            <EntityTypeMapping TypeName="Model.Workers">
+              <MappingFragment StoreEntitySet="Workers">
+                <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="ip" ColumnName="ip" />
+                <ScalarProperty Name="lastenter" ColumnName="lastenter" />
+                <ScalarProperty Name="id_dolgnost" ColumnName="id_dolgnost" />
+                <ScalarProperty Name="analyzator" ColumnName="analyzator" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -239,7 +368,7 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />

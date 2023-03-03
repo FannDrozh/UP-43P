@@ -13,26 +13,30 @@ namespace UP
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class Entities : DbContext
+    public partial class Entities1 : DbContext
     {
-        public Entities()
-            : base("name=Entities")
+        private static Entities1 _instance;
+        public Entities1()
+            : base("name=Entities1")
         {
         }
-        public static Entities GetContext()
-        {
-            if (_instance == null) _instance = new Entities();
-            return _instance;
-        }
-
+    
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
         }
+
+        public static Entities1 GetContex()
+        {
+            if (_instance == null) _instance = new Entities1();
+            return _instance;
+        }
     
-        public virtual DbSet<Result> Results { get; set; }
-        public virtual DbSet<Service> Services { get; set; }
-        public virtual DbSet<User> Users { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<Dolgnosti> Dolgnosti { get; set; }
+        public virtual DbSet<Results> Results { get; set; }
+        public virtual DbSet<Service> Service { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
+        public virtual DbSet<Users> Users { get; set; }
+        public virtual DbSet<Workers> Workers { get; set; }
     }
 }

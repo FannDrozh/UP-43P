@@ -12,16 +12,22 @@ namespace UP
     using System;
     using System.Collections.Generic;
     
-    public partial class Result
+    public partial class Users
     {
-        public int id { get; set; }
-        public Nullable<int> id_user { get; set; }
-        public Nullable<int> id_lab { get; set; }
-        public Nullable<int> id_service { get; set; }
-        public string result1 { get; set; }
-        public string data { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Users()
+        {
+            this.Results = new HashSet<Results>();
+        }
     
-        public virtual Service Service { get; set; }
-        public virtual User User { get; set; }
+        public int id { get; set; }
+        public string name { get; set; }
+        public string login { get; set; }
+        public string password { get; set; }
+        public string ip { get; set; }
+        public Nullable<System.DateTime> latenter { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Results> Results { get; set; }
     }
 }

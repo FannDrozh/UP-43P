@@ -34,41 +34,36 @@ namespace UP.Pages
         }
         private void reg_Click(object sender, RoutedEventArgs e)
         {
-            frame1.Navigate(new Registration(frame1));
+            //frame1.Navigate(new Registration(frame1));
         }
-        List<UP.User> users = new List<UP.User>();
+        List<UP.Users> users = new List<UP.Users>();
         private void Entre_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            string klients = login.Text;
+            string log = login.Text;
             string pas = password.Password;
-            int count = Entities.GetContext().Users.Count();
-            users = Entities.GetContext().Users.ToList();
-            for (int i = 0; i < count; i++)
+            int count = Entities1.GetContex().Users.Count();
+            users = Entities1.GetContex().Users.ToList();
+            for(int i = 0; i < count; i++)
             {
-                if (users[i].login == klients)
+                if (users[i].login == log)
                 {
                     if (users[i].password == pas)
                     {
-                        frame1.Navigate(new Glavnaya(users[i].login, frame1));
-                        vx = 1;
+                        frame1.Navigate(new Menu(users[i].login, frame1));
                         break;
                     }
                 }
-            }
-            if (vx == 0)
-            {
-                MessageBox.Show("Неверный логин или пароль");
             }
         }
 
         private void Reg_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            frame1.Navigate(new Registration(frame1));
+            //frame1.Navigate(new Registration(frame1));
         }
 
         private void Gues_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            frame1.Navigate(new Glavnaya("Guest", frame1));
+           // frame1.Navigate(new Glavnaya("Guest", frame1));
         }
     }
 }
