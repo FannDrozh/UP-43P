@@ -208,7 +208,6 @@
             VerticalAlignment="Top" 
             Height="60" 
             Width="520" 
-            TextChanged="password_Copy_TextChanged" 
             Margin="340,396,0,0" 
             TextAlignment="Center" 
                  FontFamily="Comic Sans MS"/>
