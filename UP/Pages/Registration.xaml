@@ -199,7 +199,7 @@
             FontSize="25" 
             Margin="906,716,0,40" 
             FontFamily="Comic Sans MS" 
-            Cursor="Hand"/>
+            Cursor="Hand" Click="back_Click"/>
         <TextBox x:Name="password_Copy" 
             Style="{DynamicResource TextBoxStyle1}" 
             HorizontalAlignment="Left" 

@@ -26,5 +26,9 @@ namespace UP.Pages
             InitializeComponent();
             frame1 = frame;
         }
+        private void back_Click(object sender, RoutedEventArgs e)
+        {
+            frame1.Navigate(new Authorization(frame1));
+        }
     }
 }
