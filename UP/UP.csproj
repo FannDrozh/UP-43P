@@ -75,6 +75,9 @@
     <Compile Include="Dolgnosti.cs">
       <DependentUpon>DataBase.tt</DependentUpon>
     </Compile>
+    <Compile Include="Pages\MENU.xaml.cs">
+      <DependentUpon>MENU.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Results.cs">
       <DependentUpon>DataBase.tt</DependentUpon>
     </Compile>
@@ -113,6 +116,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Pages\Authorization.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\MENU.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
