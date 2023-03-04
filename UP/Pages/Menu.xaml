@@ -11,7 +11,7 @@
     <Page.Resources>
         <ControlTemplate x:Key="LabelTemplate" TargetType="Label">
             <Border TextBlock.Foreground="#FF76E383" 
-                    CornerRadius="30" 
+                    CornerRadius="200" 
                     BorderThickness="4"  
                     Height="490" 
                     Width="410">
@@ -32,7 +32,7 @@
 
         <ControlTemplate x:Key="LabelShadow" TargetType="Label">
             <Border TextBlock.Foreground="#FF76E383" 
-                    CornerRadius="30" 
+                    CornerRadius="200" 
                     BorderThickness="12" 
                     BorderBrush="White"
                     Width="420" 
@@ -54,7 +54,7 @@
 
     <Grid>
 
-        <Grid Margin="85,80,680,194" 
+        <Grid Margin="85,132,680,132" 
               MouseLeftButtonDown="Grid_MouseLeftButtonDown"
               Cursor="Hand">
             <Grid.ColumnDefinitions>
@@ -81,7 +81,7 @@
         </Grid>
 
 
-        <Grid Margin="640,84,50,194" 
+        <Grid Margin="640,132,50,132" 
               Cursor="Hand"
               MouseLeftButtonDown="Grid_MouseLeftButtonDown_1">
             <Grid.ColumnDefinitions>
