@@ -9,6 +9,8 @@
       Title="Tricks">
 
     <Grid>
-        
+        <DataGrid d:ItemsSource="{d:SampleData ItemCount=5}" 
+                  Margin="64,68,64,68"/>
+
     </Grid>
 </Page>
