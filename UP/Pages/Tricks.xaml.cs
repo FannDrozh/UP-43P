@@ -20,7 +20,7 @@ namespace UP.Pages
     /// </summary>
     public partial class Tricks : Page
     {
-        public Tricks()
+        public Tricks(Frame frame)
         {
             InitializeComponent();
         }

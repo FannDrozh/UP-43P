@@ -65,6 +65,8 @@ namespace UP.Pages
             if (vx == false)
             {
                 MessageBox.Show("Неверный логин или пароль");
+                Capcha capcha = new Capcha();
+                capcha.Show();
             }
         }
     }

@@ -28,7 +28,6 @@
                 <TextBox Width="225"
                          Name="TBoxSearch"
                          FontSize="15"
-                         TextChanged="TBoxSearch_TextChanged"
                          HorizontalAlignment="Left"
                          Margin="10,0,0,0"></TextBox>
             </StackPanel>
@@ -41,7 +40,6 @@
                            TextAlignment="Right"></TextBlock>
                 <ComboBox Width="225"
                           Name="ComboType"
-                          SelectionChanged="ComboType_SelectionChanged"
                           DisplayMemberPath="Title"></ComboBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
@@ -54,7 +52,7 @@
                            TextDecorations="Underline"
                            Foreground="White" 
                            Cursor="Hand" 
-                           MouseLeftButtonDown="AddMaska_MouseLeftButtonDown"/>
+                           />
                 <TextBlock x:Name="Back"
                            Text="Назад"
                            Margin="100,5,0,0"
@@ -63,8 +61,7 @@
                            FontWeight="Bold" 
                            TextDecorations="Underline"
                            Foreground="White" 
-                           Cursor="Hand" 
-                           MouseLeftButtonDown="Back_MouseLeftButtonDown"/>
+                           Cursor="Hand" />
             </StackPanel>
         </WrapPanel>
         <ListView Grid.Row="1"
@@ -81,8 +78,7 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid Margin="20"
-                          Width="500"
-                          MouseLeftButtonDown="Grid_MouseLeftButtonDown">
+                          Width="500">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="70"></RowDefinition>
                             <RowDefinition Height="310"></RowDefinition>

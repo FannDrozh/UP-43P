@@ -20,7 +20,7 @@ namespace UP.Pages
     /// </summary>
     public partial class Services : Page
     {
-        public Services()
+        public Services(Frame frame)
         {
             InitializeComponent();
         }

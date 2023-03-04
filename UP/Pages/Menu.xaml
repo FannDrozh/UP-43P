@@ -55,8 +55,8 @@
     <Grid>
 
         <Grid Margin="85,132,680,132" 
-              MouseLeftButtonDown="Grid_MouseLeftButtonDown"
-              Cursor="Hand">
+              
+              Cursor="Hand" MouseLeftButtonDown="Grid_MouseLeftButtonDown">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
@@ -72,8 +72,8 @@
 
             <Label Content="Услуги" 
                    HorizontalAlignment="Center"
-                   Margin="0,0,0,40"
-                   VerticalAlignment="Bottom" 
+                   Margin="0,419,0,0"
+                   VerticalAlignment="Top" 
                    Height="66"
                    FontSize="44"
                    Foreground="White" 
@@ -82,8 +82,7 @@
 
 
         <Grid Margin="640,132,50,132" 
-              Cursor="Hand"
-              MouseLeftButtonDown="Grid_MouseLeftButtonDown_1">
+              Cursor="Hand" MouseLeftButtonDown="Grid_MouseLeftButtonDown_1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
