@@ -5,7 +5,7 @@ VisualStudioVersion = 17.2.32630.192
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UP", "UP\UP.csproj", "{6368AF4B-3675-4774-A947-A7237E8001DA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Captcha", "..\Captcha_WPF_UserControl\Captcha\Captcha.csproj", "{BA2319D8-7C04-4981-B5D4-DD742C7D0034}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Captcha", "Captcha\Captcha.csproj", "{BA2319D8-7C04-4981-B5D4-DD742C7D0034}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

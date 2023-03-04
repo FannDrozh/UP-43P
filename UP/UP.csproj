@@ -208,11 +208,5 @@
     <Resource Include="Image\Приёмы.png" />
     <Resource Include="Image\Услуги.png" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\Captcha_WPF_UserControl\Captcha\Captcha.csproj">
-      <Project>{ba2319d8-7c04-4981-b5d4-dd742c7d0034}</Project>
-      <Name>Captcha</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
