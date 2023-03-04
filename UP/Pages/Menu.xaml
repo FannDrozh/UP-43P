@@ -10,7 +10,11 @@
 
     <Page.Resources>
         <ControlTemplate x:Key="LabelTemplate" TargetType="Label">
-            <Border TextBlock.Foreground="#46B29D" CornerRadius="30" BorderThickness="4"  Height="490" Width="410">
+            <Border TextBlock.Foreground="#FF76E383" 
+                    CornerRadius="30" 
+                    BorderThickness="4"  
+                    Height="490" 
+                    Width="410">
                 <Border.Background>
                     <LinearGradientBrush>
                         <LinearGradientBrush.GradientStops>
@@ -27,7 +31,12 @@
 
 
         <ControlTemplate x:Key="LabelShadow" TargetType="Label">
-            <Border TextBlock.Foreground="#46B29D" CornerRadius="30" BorderThickness="12" BorderBrush="White" Width="420" Height="500">
+            <Border TextBlock.Foreground="#FF76E383" 
+                    CornerRadius="30" 
+                    BorderThickness="12" 
+                    BorderBrush="White"
+                    Width="420" 
+                    Height="500">
                 <Border.Background>
                     <LinearGradientBrush>
                         <LinearGradientBrush.GradientStops>
@@ -37,7 +46,8 @@
                         </LinearGradientBrush.GradientStops>
                     </LinearGradientBrush>
                 </Border.Background>
-                <ContentPresenter RecognizesAccessKey="True" Margin="0,0,-3,7"/>
+                <ContentPresenter RecognizesAccessKey="True" 
+                                  Margin="0,0,-3,7"/>
             </Border>
         </ControlTemplate>
     </Page.Resources>

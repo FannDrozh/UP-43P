@@ -18,7 +18,8 @@
                    Width="1200">
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Введите название для поиска: " 
-                           Width="175" TextAlignment="Right" 
+                           Width="175" 
+                           TextAlignment="Right" 
                            Foreground="White"
                            FontStyle="Normal"
                            FontFamily="Bahnschrift"
