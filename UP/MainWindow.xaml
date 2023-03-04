@@ -8,5 +8,7 @@
         Title="MainWindow" Height="800" Width="1200" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Background="#FF498C51">
     <Grid>
         <Frame NavigationUIVisibility='Hidden' Name="MainFrame"></Frame>
+        <Label Content="Времени осталось:" HorizontalAlignment="Left" Margin="912,719,0,0" VerticalAlignment="Top" FontSize="20" Width="192" Foreground="White"/>
+        <TextBox x:Name="Time" HorizontalAlignment="Left" Margin="1095,724,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="54" Background="{x:Null}" FontSize="20" Foreground="White" BorderBrush="{x:Null}"/>
     </Grid>
 </Window>
