@@ -33,6 +33,7 @@ namespace UP.Pages
 
         }
         List<UP.Users> users = new List<UP.Users>();
+        List<UP.Workers> workers = new List<UP.Workers>();
 
         private void Gues_Click(object sender, RoutedEventArgs e)
         {
@@ -50,6 +51,8 @@ namespace UP.Pages
             string pas = password.Password;
             int count = Entities1.GetContex().Users.Count();
             users = Entities1.GetContex().Users.ToList();
+            int count1 = Entities1.GetContex().Workers.Count();
+            workers = Entities1.GetContex().Workers.ToList();
             for (int i = 0; i < count; i++)
             {
                 if (users[i].login == log)
@@ -57,6 +60,18 @@ namespace UP.Pages
                     if (users[i].password == pas)
                     {
                         frame1.Navigate(new MENU(users[i].login, frame1));
+                        vx = true;
+                        break;
+                    }
+                }
+            }
+            for (int i = 0; i < count; i++)
+            {
+                if (workers[i].login == log)
+                {
+                    if (workers[i].password == pas)
+                    {
+                        frame1.Navigate(new MENU(workers[i].login, frame1));
                         vx = true;
                         break;
                     }
