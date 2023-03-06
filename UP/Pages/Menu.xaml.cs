@@ -31,12 +31,12 @@ namespace UP.Pages
 
         private void Grid_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            frame1.Navigate(new Services(frame1));
+            frame1.Navigate(new Services(User, frame1));
         }
 
         private void Grid_MouseLeftButtonDown_1(object sender, MouseButtonEventArgs e)
         {
-            frame1.Navigate(new Tricks(frame1));
+            frame1.Navigate(new Tricks(User, frame1));
         }
     }
 }

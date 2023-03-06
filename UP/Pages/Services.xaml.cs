@@ -20,9 +20,18 @@ namespace UP.Pages
     /// </summary>
     public partial class Services : Page
     {
-        public Services(Frame frame)
-        {
+        public Frame frame1;
+        string User;
+        public Services(string user, Frame frame)
+        { 
             InitializeComponent();
+            frame1 = frame;
+            User = user;
+        }
+
+        private void Back_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            frame1.Navigate(new MENU(User, frame1));
         }
     }
 }

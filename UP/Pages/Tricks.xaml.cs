@@ -20,9 +20,17 @@ namespace UP.Pages
     /// </summary>
     public partial class Tricks : Page
     {
-        public Tricks(Frame frame)
+        public Frame frame1;
+        string User;
+        public Tricks(string user, Frame frame)
         {
             InitializeComponent();
+            frame1 = frame;
+            User = user;
+        }
+        private void Back_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            frame1.Navigate(new MENU(User, frame1));
         }
     }
 }

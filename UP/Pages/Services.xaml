@@ -61,6 +61,7 @@
                            FontWeight="Bold" 
                            TextDecorations="Underline"
                            Foreground="White" 
+                           MouseLeftButtonDown="Back_MouseLeftButtonDown"
                            Cursor="Hand" />
             </StackPanel>
         </WrapPanel>
