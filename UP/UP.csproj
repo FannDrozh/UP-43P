@@ -81,11 +81,17 @@
     <Compile Include="Pages\MENU.xaml.cs">
       <DependentUpon>MENU.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\MENUW.xaml.cs">
+      <DependentUpon>MENUW.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Registration.xaml.cs">
       <DependentUpon>Registration.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Services.xaml.cs">
       <DependentUpon>Services.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ServicesWorkers.xaml.cs">
+      <DependentUpon>ServicesWorkers.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Tricks.xaml.cs">
       <DependentUpon>Tricks.xaml</DependentUpon>
@@ -139,11 +145,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\MENUW.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Registration.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\Services.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ServicesWorkers.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

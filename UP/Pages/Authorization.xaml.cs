@@ -65,13 +65,13 @@ namespace UP.Pages
                     }
                 }
             }
-            for (int i = 0; i < count; i++)
+            for (int i = 0; i < count1; i++)
             {
                 if (workers[i].login == log)
                 {
                     if (workers[i].password == pas)
                     {
-                        frame1.Navigate(new MENU(workers[i].login, frame1));
+                        frame1.Navigate(new MENUW(workers[i].login, frame1));
                         vx = true;
                         break;
                     }
