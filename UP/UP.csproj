@@ -96,6 +96,9 @@
     <Compile Include="Pages\Tricks.xaml.cs">
       <DependentUpon>Tricks.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\TricksW.xaml.cs">
+      <DependentUpon>TricksW.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Results.cs">
       <DependentUpon>DataBase.tt</DependentUpon>
     </Compile>
@@ -162,6 +165,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\Tricks.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\TricksW.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

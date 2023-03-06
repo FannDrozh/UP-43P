@@ -16,26 +16,27 @@ using System.Windows.Shapes;
 namespace UP.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для MENUW.xaml
+    /// Логика взаимодействия для TricksW.xaml
     /// </summary>
-    public partial class MENUW : Page
+    public partial class TricksW : Page
     {
         public Frame frame1;
-        string worker;
-        public MENUW(string workers, Frame frame)
+        string Worker;
+        public TricksW(string workers, Frame frame)
         {
             InitializeComponent();
             frame1 = frame;
-            worker = workers;
-        }
-        private void Grid_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            frame1.Navigate(new ServicesWorkers(worker, frame1));
+            Worker = workers;
         }
 
-        private void Grid_MouseLeftButtonDown_1(object sender, MouseButtonEventArgs e)
+        private void Back_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            frame1.Navigate(new TricksW(worker, frame1));
+            frame1.Navigate(new MENUW(Worker, frame1));
+        }
+
+        private void Add_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+
         }
     }
 }
