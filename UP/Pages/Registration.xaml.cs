@@ -47,6 +47,7 @@ namespace UP.Pages
                         user[0].id = count+ 1;
                         user[0].login = log;
                         user[0].password = pas1;
+                        Entities1.GetContex().Users.Add(user[0]);
                         Entities1.GetContex().SaveChanges();
                         frame1.Navigate(new Authorization(frame1));
                     }
