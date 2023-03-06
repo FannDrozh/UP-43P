@@ -28,6 +28,6 @@
                  FontSize="20"
                  Foreground="White"
                  BorderBrush="{x:Null}"
-               TextChanged="TextBox_TextChanged"/>
+               TextChanged="TextBox_TextChanged" IsEnabled="False"/>
     </Grid>
 </Window>

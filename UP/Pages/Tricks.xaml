@@ -12,6 +12,7 @@
             <RowDefinition Height="auto"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
+
         <WrapPanel Orientation="Horizontal" 
                    HorizontalAlignment="Center" 
                    Width="1200">
@@ -64,11 +65,11 @@
                            Cursor="Hand" />
             </StackPanel>
         </WrapPanel>
-        <ListView Grid.Row="1"
+        <ListView
                   Name="LViewTours"
                   ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                   HorizontalContentAlignment="Center"
-                  SelectedItem ="{Binding SelectedItem}">
+                  SelectedItem ="{Binding SelectedItem}" Margin="0,23,0,0" Grid.RowSpan="2">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel Orientation="Horizontal"
