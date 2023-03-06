@@ -17,49 +17,52 @@
                    HorizontalAlignment="Center" 
                    Width="1200">
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Введите название для поиска: " 
-                           Width="175" 
+                <TextBlock Text="Поиск:" 
+                           Width="42" 
                            TextAlignment="Right" 
                            Foreground="White"
                            FontStyle="Normal"
-                           FontFamily="Bahnschrift"
-                           HorizontalAlignment="Left" 
-                           Margin="50,5,0,0"></TextBlock>
-                <TextBox Width="225"
-                         Name="TBoxSearch"
-                         FontSize="15"
-                         HorizontalAlignment="Left"
-                         Margin="10,0,0,0"></TextBox>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Выберите тип: "
-                           Foreground="White"
-                           Width="175"
-                           Margin="0,5,10,0"
-                           FontFamily="Bahnschrift"
-                           TextAlignment="Right"></TextBlock>
-                <ComboBox Width="225"
-                          Name="ComboType"
-                          DisplayMemberPath="Title"></ComboBox>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock x:Name="AddMaska"
-                           Text="Добавить"
-                           Margin="100,5,0,0"
-                           FontFamily="Bahnschrift"
-                           FontSize="15" 
-                           FontWeight="Bold" 
-                           TextDecorations="Underline"
-                           Foreground="White" 
-                           Cursor="Hand" 
+                           FontFamily="Bahnschrift" VerticalAlignment="Center" HorizontalAlignment="Center"
                            />
+                <TextBox Width="264"
+                          Margin="20,0,0,0"
+                         x:Name="TBoxSearch"
+                         FontSize="15"
+                         />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Сортировка"
+                           Foreground="White"
+                            Margin="20,0,0,0"
+                           Width="72"
+                           FontFamily="Bahnschrift"
+                           TextAlignment="Right" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <ComboBox Width="270"
+                          Margin="20,0,0,0"
+                          x:Name="ComboType"
+                          DisplayMemberPath="Title"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Фильтрация"
+                           Margin="20,0,0,0"
+                           Foreground="White"
+                           Width="72"
+                           FontFamily="Bahnschrift"
+                           TextAlignment="Right" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <ComboBox Width="280"
+                        Margin="20,0,0,0"
+                          x:Name="Combo"
+                          DisplayMemberPath="Title"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Width="45" Margin="40,0,0,0" >
                 <TextBlock x:Name="Back"
                            Text="Назад"
-                           Margin="100,5,0,0"
                            FontFamily="Bahnschrift"
                            FontSize="15" 
                            FontWeight="Bold" 
                            TextDecorations="Underline"
+                           
                            Foreground="White" 
                            MouseLeftButtonDown="Back_MouseLeftButtonDown"
                            Cursor="Hand" />
