@@ -4,13 +4,23 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Dolgnosti">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" Nullable="false" />
           <Property Name="dolgnost" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="History">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="login" Type="nvarchar(max)" />
+          <Property Name="ip" Type="nvarchar(max)" />
+          <Property Name="dataZ" Type="datetime" />
+          <Property Name="Block" Type="datetime" />
         </EntityType>
         <EntityType Name="Results">
           <Key>
@@ -51,6 +61,7 @@
           <Property Name="password" Type="varchar(max)" />
           <Property Name="ip" Type="varchar(max)" />
           <Property Name="latenter" Type="date" />
+          <Property Name="id_history" Type="int" />
         </EntityType>
         <EntityType Name="Workers">
           <Key>
@@ -115,6 +126,7 @@
         </Association>
         <EntityContainer Name="Хранилище ModelContainer">
           <EntitySet Name="Dolgnosti" EntityType="Self.Dolgnosti" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="History" EntityType="Self.History" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Results" EntityType="Self.Results" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Service" EntityType="Self.Service" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
@@ -137,8 +149,7 @@
             <End Role="Workers" EntitySet="Workers" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -194,6 +205,7 @@
           <Property Name="ip" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="latenter" Type="DateTime" Precision="0" />
           <NavigationProperty Name="Results" Relationship="Self.FK_Results_Users" FromRole="Users" ToRole="Results" />
+          <Property Name="id_history" Type="Int32" />
         </EntityType>
         <EntityType Name="Workers">
           <Key>
@@ -281,7 +293,18 @@
             <End Role="Workers" EntitySet="Workers" />
             <End Role="Results" EntitySet="Results" />
           </AssociationSet>
+          <EntitySet Name="History" EntityType="Model.History" />
         </EntityContainer>
+        <EntityType Name="History">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="login" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ip" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="dataZ" Type="DateTime" Precision="3" />
+          <Property Name="Block" Type="DateTime" Precision="3" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -331,6 +354,7 @@
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="Model.Users">
               <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="id_history" ColumnName="id_history" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="login" ColumnName="login" />
@@ -351,6 +375,17 @@
                 <ScalarProperty Name="lastenter" ColumnName="lastenter" />
                 <ScalarProperty Name="id_dolgnost" ColumnName="id_dolgnost" />
                 <ScalarProperty Name="analyzator" ColumnName="analyzator" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="History">
+            <EntityTypeMapping TypeName="Model.History">
+              <MappingFragment StoreEntitySet="History">
+                <ScalarProperty Name="Block" ColumnName="Block" />
+                <ScalarProperty Name="dataZ" ColumnName="dataZ" />
+                <ScalarProperty Name="ip" ColumnName="ip" />
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -15,6 +15,7 @@
         <AssociationConnector Association="Model.FK_Results_Service" ManuallyRouted="false" />
         <AssociationConnector Association="Model.FK_Results_Users" ManuallyRouted="false" />
         <AssociationConnector Association="Model.FK_Results_Workers" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="Model.History" Width="1.5" PointX="7.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
