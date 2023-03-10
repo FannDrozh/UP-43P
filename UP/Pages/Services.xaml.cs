@@ -12,7 +12,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using UP.Class;
 
 namespace UP.Pages
 {
@@ -32,6 +31,13 @@ namespace UP.Pages
             InitializeComponent();
             frame1 = frame;
             User = user;
+
+
+            List_Service = Entities1.GetContex().Service.ToList();
+            int count= Entities1.GetContex().Service.Count();
+            sp.CountPage = 3;
+            sp.Countlist = count;
+            LViewServ.ItemsSource = List_Service.Skip(0).Take(sp.CountPage).ToList();
         }
 
         private void Back_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -73,7 +79,7 @@ namespace UP.Pages
                     sp.CurrentPage = Convert.ToInt32(tb.Text);
                     break;
             }
-            LViewTours.ItemsSource = List_Service.Skip(sp.CurrentPage * sp.CountPageFlower - sp.CountPageFlower).Take(sp.CountPageFlower).ToList();
+            LViewServ.ItemsSource = List_Service.Skip(sp.CurrentPage * sp.CountPage - sp.CountPage).Take(sp.CountPage).ToList();
         }
     }
 }

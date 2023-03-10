@@ -5,26 +5,26 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace UP.Class
+namespace UP.Pages
 {
-    internal class Navig : INotifyPropertyChanged
+    class Navig : INotifyPropertyChanged // класс, который наследуется от интерфейса INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;  //событие, для изменения значения одного из массивов свойств, описанных ниже
-        static int kolvoflower = 5; //количество объектов для отображения (1 2 3 4 5)
-        public int[] NPage { get; set; } = new int[kolvoflower];// массив с номерами отображаемых страниц    
-        public string[] Visible { get; set; } = new string[kolvoflower];//массив свойст, отвечающий за видимость номера страницы, Visible - видимый, Hidden - скрытый
-        public string[] Bold { get; set; } = new string[kolvoflower];//массив свойств, отвечающий за выделение номера текущей страницы
+        static int kolvo = 5; //количество объектов для отображения (1 2 3 4 5)
+        public int[] NPage { get; set; } = new int[kolvo];// массив с номерами отображаемых страниц    
+        public string[] Visible { get; set; } = new string[kolvo];//массив свойст, отвечающий за видимость номера страницы, Visible - видимый, Hidden - скрытый
+        public string[] Bold { get; set; } = new string[kolvo];//массив свойств, отвечающий за выделение номера текущей страницы
 
         int sohrkolvo; // переменная, в которой буде храниться количество страниц
-        public int CountPagesFlower//свойство в котором хранится общее кол-во страц, при изменении данного свойства будет определяться, скрыт будет номер той или итой страницы или нет (в зависимости об общего кол-ва записей в списке) 
+        public int CountPages//свойство в котором хранится общее кол-во страц, при изменении данного свойства будет определяться, скрыт будет номер той или итой страницы или нет (в зависимости об общего кол-ва записей в списке) 
         {
             get => sohrkolvo;
             set
             {
                 sohrkolvo = value;
-                for (int i = 1; i < kolvoflower; i++)//цикл для определения видимости номеров страниц
+                for (int i = 1; i < kolvo; i++)//цикл для определения видимости номеров страниц
                 {
-                    if (CountPagesFlower <= i)
+                    if (CountPages <= i)
                     {
                         Visible[i] = "Hidden";//если страниц меньше, чем кнопок - скрываем лишние
                     }
@@ -36,40 +36,41 @@ namespace UP.Class
             }
         }
         int countpage;//количество записей на странице
-        public int CountPageFlower  //свойство, в котором хранится количество записей на странице, при изменении данного свойства будет изменяться общее количесво страниц для отображения
+        public int CountPage  //свойство, в котором хранится количество записей на странице, при изменении данного свойства будет изменяться общее количесво страниц для отображения
         {
             get => countpage;
             set
             {
                 countpage = value;
-                if (CountlistFlower % value == 0)
+                if (Countlist % value == 0)
                 {
-                    CountPagesFlower = CountlistFlower / value;//определение количества страниц
+                    CountPages = Countlist / value;//определение количества страниц
                 }
                 else
                 {
-                    CountPagesFlower = CountlistFlower / value + 1;//в случае нецелого числа прибавляем 1 к итоговому количеству страниц
+                    CountPages = Countlist / value + 1;//в случае нецелого числа прибавляем 1 к итоговому количеству страниц
                 }
             }
         }
         int countlist; // количество записей в списке
 
-        public int CountlistFlower //свойство, в котором хранится общее количество записей в списке, при изменении данного свойства будет изменяться общее количесво страниц для отображения
+        public int Countlist //свойство, в котором хранится общее количество записей в списке, при изменении данного свойства будет изменяться общее количесво страниц для отображения
         {
             get => countlist;
             set
             {
                 countlist = value;
-                if (value % CountPageFlower == 0)
+                if (value % CountPage == 0)
                 {
-                    CountPagesFlower = value / CountPageFlower;//определение количества страниц
+                    CountPages = value / CountPage;//определение количества страниц
                 }
                 else
                 {
-                    CountPagesFlower = 1 + value / CountPageFlower;
+                    CountPages = 1 + value / CountPage;
                 }
             }
         }
+
 
         int str;//текущая страница
         public int CurrentPage  // свойство, в котором будет хранится текущая страница, при изменении которого будет меняться вся отрисовка меню с номерами страниц
@@ -82,18 +83,18 @@ namespace UP.Class
                 {
                     str = 1;
                 }
-                if (str >= CountPagesFlower)
+                if (str >= CountPages)
                 {
-                    str = CountPagesFlower;
+                    str = CountPages;
                 }
                 //отрисовка меню с номерами страниц, рассмотрим три возможных случая                            
-                for (int i = 0; i < kolvoflower; i++)
+                for (int i = 0; i < kolvo; i++)
                 {
-                    if (str < (1 + kolvoflower / 2) || CountPagesFlower < kolvoflower) NPage[i] = i + 1;//если страница в начале списка
-                    else if (str > CountPagesFlower - (kolvoflower / 2 + 1)) NPage[i] = CountPagesFlower - (kolvoflower - 1) + i;//если страница в конце списка
-                    else NPage[i] = str + i - (kolvoflower / 2);//если страница в середине списка
+                    if (str < (1 + kolvo / 2) || CountPages < kolvo) NPage[i] = i + 1;//если страница в начале списка
+                    else if (str > CountPages - (kolvo / 2 + 1)) NPage[i] = CountPages - (kolvo - 1) + i;//если страница в конце списка
+                    else NPage[i] = str + i - (kolvo / 2);//если страница в середине списка
                 }
-                for (int i = 0; i < kolvoflower; i++)//выделяем активную страницу жирным
+                for (int i = 0; i < kolvo; i++)//выделяем активную страницу жирным
                 {
                     if (NPage[i] == str) Bold[i] = "ExtraBold";
                     else Bold[i] = "Regular";
@@ -107,7 +108,7 @@ namespace UP.Class
 
         public Navig() // контруктор
         {
-            for (int i = 0; i < kolvoflower; i++)  // показываем исходное меню ( 1 2 3 4 5)
+            for (int i = 0; i < kolvo; i++)  // показываем исходное меню ( 1 2 3 4 5)
             {
                 if (i == 0)
                 {

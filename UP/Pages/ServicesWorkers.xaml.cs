@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using UP.Class;
+
 
 namespace UP.Pages
 {
@@ -77,7 +77,7 @@ namespace UP.Pages
                     sp.CurrentPage = Convert.ToInt32(tb.Text);
                     break;
             }
-            LViewTours.ItemsSource = List_Service.Skip(sp.CurrentPage * sp.CountPageFlower - sp.CountPageFlower).Take(sp.CountPageFlower).ToList();
+            LViewTours.ItemsSource = List_Service.Skip(sp.CurrentPage * sp.CountPage - sp.CountPage).Take(sp.CountPage).ToList();
         }
     }
 }
