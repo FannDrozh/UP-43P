@@ -224,7 +224,9 @@
                 VerticalAlignment="Top"
                 FontSize="50" 
                 FontFamily="Comic Sans MS"
-                Foreground="White" Width="144" Click="Button_Click" />
+                Foreground="White" 
+                Width="144" 
+                Click="Button_Click" />
         <Image HorizontalAlignment="Left"
                Height="51"
                Margin="876,302,0,0"
