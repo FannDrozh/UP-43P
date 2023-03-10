@@ -15,16 +15,22 @@ namespace UP
     
     public partial class Entities1 : DbContext
     {
+        private static Entities1 _instance;
         public Entities1()
             : base("name=Entities1")
         {
         }
-    
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
         }
-    
+
+        public static Entities1 GetContex()
+        {
+            if (_instance == null) _instance = new Entities1();
+            return _instance;
+        }
         public virtual DbSet<Dolgnosti> Dolgnosti { get; set; }
         public virtual DbSet<Results> Results { get; set; }
         public virtual DbSet<Service> Service { get; set; }
