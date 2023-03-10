@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -43,10 +44,18 @@ namespace UP.Pages
                     if(pas == pas1)
                     {
                         List<UP.Users> user = new List<UP.Users>() { new Users()};
+                        List<History> h = new List<History>() { new History() };
                         int count = Entities1.GetContex().Users.Count();
+                        int count_h = Entities1.GetContex().History.Count();
                         user[0].id = count+ 1;
                         user[0].login = log;
                         user[0].password = pas1;
+                        h[0].id = count_h + 1;
+                        h[0].login = log;
+                        h[0].ip = Dns.GetHostName();
+                        h[0].dataZ = DateTime.Now;
+                        h[0].Block = DateTime.Now.AddMinutes(-30);
+                        Entities1.GetContex().History.Add(h[0]);
                         Entities1.GetContex().Users.Add(user[0]);
                         Entities1.GetContex().SaveChanges();
                         frame1.Navigate(new Authorization(frame1));
