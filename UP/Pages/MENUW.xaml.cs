@@ -37,5 +37,10 @@ namespace UP.Pages
         {
             frame1.Navigate(new TricksW(worker, frame1));
         }
+
+        private void Back_Click(object sender, RoutedEventArgs e)
+        {
+            frame1.Navigate(new Authorization(frame1));
+        }
     }
 }

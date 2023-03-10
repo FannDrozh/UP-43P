@@ -27,11 +27,8 @@ namespace UP.Pages
             frame1 = frame;
             InitializeComponent();
         }
-        public Authorization()
-        {
-            InitializeComponent();
+        
 
-        }
         List<UP.Users> users = new List<UP.Users>();
         List<UP.Workers> workers = new List<UP.Workers>();
 
