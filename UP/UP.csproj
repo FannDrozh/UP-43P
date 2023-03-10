@@ -79,6 +79,9 @@
     <Compile Include="Dolgnosti.cs">
       <DependentUpon>DataBase.tt</DependentUpon>
     </Compile>
+    <Compile Include="History.cs">
+      <DependentUpon>DataBase.tt</DependentUpon>
+    </Compile>
     <Compile Include="Pages\MENU.xaml.cs">
       <DependentUpon>MENU.xaml</DependentUpon>
     </Compile>
