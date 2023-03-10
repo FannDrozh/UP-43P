@@ -78,7 +78,6 @@ namespace UP.Pages
                                 {
                                     vx = 1;
                                     int count_h = Entities1.GetContex().History.Count();
-                                    history_login[0].id = count_h + 1;
                                     history_login[0].login = log;
                                     history_login[0].dataZ = DateTime.Now;
                                     history_login[0].ip = Dns.GetHostName();
